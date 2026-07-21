@@ -173,7 +173,7 @@
 
   .media-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:32px; border:1px solid var(--verde-profundo); }
   .media-grid.project-layout{ gap:32px; }
-  .project-col{ display:grid; grid-template-columns: 1fr; gap:32px; align-items:start; max-width:640px; margin:0 auto; }
+  .project-col{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:32px; align-items:start; }
   .project-copy{ display:flex; flex-direction:column; gap:18px; }
   .media-col{ background: var(--verde-profundo); color: var(--areia); padding:28px; display:flex; flex-direction:column; }
   .media-col.light{ background: var(--branco); color: var(--grafite); }
@@ -362,6 +362,11 @@
     </div>
 
     <div class="project-col">
+      <div class="terrain-col">
+        <div class="media-frame">
+          <img src="images/terreno-a-venda-costa-do-sol-bertioga.jpeg" alt="Terreno à venda no Loteamento Costa do Sol, em Bertioga" width="1280" height="720" loading="lazy">
+        </div>
+      </div>
       <div class="media-col light">
         <div class="media-frame blueprint">
           <img src="images/projeto-aprovado-terreno-bertioga-planta.png" alt="Planta do projeto arquitetônico aprovado para o terreno no Loteamento Costa do Sol, Bertioga" width="2586" height="2376" loading="lazy">
