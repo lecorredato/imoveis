@@ -125,7 +125,8 @@
     background-size:cover; background-position: center center;
     transform: scale(1.02);
   }
-  .seal{ position:absolute; top:104px; right:28px; width:118px; height:118px; border-radius:50%; border:1px solid rgba(255,253,248,0.55); display:flex; align-items:center; justify-content:center; z-index:5; }
+  .seal-mount{ position:absolute; top:104px; left:0; right:0; z-index:5; pointer-events:none; }
+  .seal{ position:absolute; top:0; right:0; width:118px; height:118px; border-radius:50%; border:1px solid rgba(255,253,248,0.55); display:flex; align-items:center; justify-content:center; pointer-events:auto; }
   .seal-inner{ width:96px; height:96px; border-radius:50%; border:1px dashed rgba(255,253,248,0.5); display:flex; align-items:center; justify-content:center; text-align:center; animation: spin 40s linear infinite; }
   @keyframes spin{ to{ transform:rotate(360deg); } }
   .seal-text{ font-family: var(--mono); font-size:9.5px; letter-spacing:0.12em; line-height:1.5; animation: counterspin 40s linear infinite; }
@@ -171,12 +172,12 @@
   .chip .mark::after{ content:""; position:absolute; inset:7px; border-radius:50%; background: var(--terracota); }
   .chip span{ font-size:13.5px; font-weight:500; line-height:1.35; }
 
-  .media-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:32px; border:1px solid var(--verde-profundo); }
-  .media-grid.project-layout{ gap:32px; }
-  .project-col{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:32px; align-items:start; }
-  .project-copy{ display:flex; flex-direction:column; gap:18px; }
-  .media-col{ background: var(--verde-profundo); color: var(--areia); padding:28px; display:flex; flex-direction:column; }
+  .project-showcase{ max-width:960px; margin:0 auto; }
+  .media-col{ background: var(--verde-profundo); color: var(--areia); padding:28px; }
   .media-col.light{ background: var(--branco); color: var(--grafite); }
+  .project-box{ display:grid; grid-template-columns: 1fr 1fr; gap:28px; align-items:start; }
+  .project-box-media .media-frame{ margin-bottom:0; height:100%; }
+  .project-box-media .media-frame img{ height:100%; min-height:360px; }
   .media-frame{ border:1px solid rgba(255,253,248,0.25); padding:10px; margin-bottom:16px; }
   .media-col.light .media-frame{ border-color: var(--linha); }
   .media-frame img{ width:100%; height:420px; object-fit:cover; }
@@ -186,6 +187,7 @@
   }
   .media-caption{ font-family: var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; opacity:0.6; margin-bottom:6px; }
   .media-col h3{ font-size:15px; font-family: var(--mono); font-weight:700; letter-spacing:0.03em; text-transform:uppercase; opacity:0.85; margin:14px 0 12px; }
+  .project-box-info h3{ margin-top:0; }
   .stat-list{ display:flex; flex-direction:column; }
   .stat-row{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,253,248,0.16); font-size:14px; }
   .media-col.light .stat-row{ border-bottom-color: var(--linha); }
@@ -213,7 +215,7 @@
 
   .final-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:20px; }
 
-  .faq-block{ background:#f4efe3; color: var(--grafite); border-radius:24px; padding:32px; margin-top:76px; }
+  .faq-block{ background:#f4efe3; color: var(--grafite); padding:32px; margin-top:76px; }
   .faq-item{ border-bottom:1px solid rgba(38,36,31,0.08); padding:22px 0; }
   .faq-item:last-child{ border-bottom:none; }
   .faq-item h3{ font-size:16.5px; font-weight:500; margin-bottom:10px; color: var(--verde-profundo); }
@@ -257,16 +259,16 @@
     .nav-links{ display:none; }
     .nav-logo{ font-size:17px; }
     .highlight-row{ grid-template-columns: repeat(2,1fr); }
-    .media-grid{ grid-template-columns: 1fr; }
     .section-head.project-header{ grid-template-columns: 1fr; }
-    .project-col{ grid-template-columns: 1fr; }
+    .project-box{ grid-template-columns: 1fr; }
     .media-frame img{ height:260px; }
-    .project-col{ max-width:none; }
+    .project-box-media .media-frame img{ min-height:260px; }
     .section-head.project-header .section-head-image img{ min-height:260px; }
     .contact-wrap{ grid-template-columns: 1fr; }
     .loc-facts{ gap:0 24px; }
     section.main-section{ padding:76px 0; }
-    .seal{ width:84px; height:84px; top:80px; right:16px; }
+    .seal-mount{ top:80px; }
+    .seal{ width:84px; height:84px; }
     .seal-inner{ width:64px; height:64px; }
     .wa-fixed{ display:flex; }
     .whatsapp-bubble{ bottom:96px; }
@@ -304,13 +306,16 @@
 <!-- SEÇÃO 1 — HERO -->
 <header class="hero">
   <div class="hero-bg"></div>
-  <div class="seal">
-    <div class="seal-inner">
-      <div class="seal-text">PROJETO<br>APROVADO<br>★ ZD-8 ★</div>
+  <div class="seal-mount">
+    <div class="container" style="position:relative; height:0;">
+      <div class="seal">
+        <div class="seal-inner">
+          <div class="seal-text">PROJETO<br>APROVADO<br>★ ZD-8 ★</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="hero-content container">
-    <div class="eyebrow">Terreno à venda · Loteamento Costa do Sol — Bertioga/SP</div>
     <h1>Terreno à venda em Bertioga com projeto aprovado</h1>
     <p class="tagline">Seu terreno no litoral começa aqui.</p>
     <p class="sub">Terreno de 373,23 m² à venda no Loteamento Costa do Sol, em Bertioga, a apenas 2 km da Praia de Guaratuba. Área familiar, com casas já construídas nos lotes vizinhos, e projeto arquitetônico aprovado.</p>
@@ -361,27 +366,28 @@
       <div class="chip"><div class="mark"></div><span>Piscina prevista no projeto</span></div>
     </div>
 
-    <div class="project-col">
-      <div class="terrain-col">
-        <div class="media-frame">
-          <img src="images/terreno-a-venda-costa-do-sol-bertioga.jpeg" alt="Terreno à venda no Loteamento Costa do Sol, em Bertioga" width="1280" height="720" loading="lazy">
-        </div>
-      </div>
+    <div class="project-showcase">
       <div class="media-col light">
-        <div class="media-frame blueprint">
-          <img src="images/projeto-aprovado-terreno-bertioga-planta.png" alt="Planta do projeto arquitetônico aprovado para o terreno no Loteamento Costa do Sol, Bertioga" width="2586" height="2376" loading="lazy">
-        </div>
-        <h3>Detalhes do projeto aprovado</h3>
-        <div class="stat-list">
-          <div class="stat-row"><span class="label">Área construída aprovada</span><span class="value">145,37 m²</span></div>
-          <div class="stat-row"><span class="label">Piscina</span><span class="value">15,00 m²</span></div>
-          <div class="stat-row"><span class="label">Área permeável</span><span class="value">20% (74,65 m²)</span></div>
-        </div>
-        <div class="amenities-list">
-          <div class="amenity">3 suítes amplas com integração para jardim, piscina e área de lazer</div>
-          <div class="amenity">Churrasqueira</div>
-          <div class="amenity">Estacionamento para 2 carros</div>
-          <div class="amenity">Living integrado, conceito aberto</div>
+        <div class="project-box">
+          <div class="project-box-media">
+            <div class="media-frame blueprint">
+              <img src="images/projeto-aprovado-terreno-bertioga-planta.png" alt="Planta do projeto arquitetônico aprovado para o terreno no Loteamento Costa do Sol, Bertioga" width="2586" height="2376" loading="lazy">
+            </div>
+          </div>
+          <div class="project-box-info">
+            <h3>Detalhes do projeto aprovado</h3>
+            <div class="stat-list">
+              <div class="stat-row"><span class="label">Área construída aprovada</span><span class="value">145,37 m²</span></div>
+              <div class="stat-row"><span class="label">Piscina</span><span class="value">15,00 m²</span></div>
+              <div class="stat-row"><span class="label">Área permeável</span><span class="value">20% (74,65 m²)</span></div>
+            </div>
+            <div class="amenities-list">
+              <div class="amenity">3 suítes amplas com integração para jardim, piscina e área de lazer</div>
+              <div class="amenity">Churrasqueira</div>
+              <div class="amenity">Estacionamento para 2 carros</div>
+              <div class="amenity">Living integrado, conceito aberto</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
